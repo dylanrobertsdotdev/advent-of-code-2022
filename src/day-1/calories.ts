@@ -44,6 +44,5 @@ const getData = async () => {
             count += Number(item)
         }
     })
-
     console.log(top[0] + top[1] + top[2])
 })();
