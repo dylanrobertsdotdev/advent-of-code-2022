@@ -1,14 +1,8 @@
-import fs from 'fs/promises'
-import path from 'path'
-
-const getData = async () => {
-    const file = path.join(process.cwd(), 'src', 'day-1', 'calories.txt')
-    return await fs.readFile(file, { encoding: 'utf-8' })
-}
+import getData from './lib/getData.js'
 
 // Finds the elf with the greatest number of calories
 (async () => {
-    const data = await getData()
+    const data = await getData('calories.txt')
     let count = 0
     let max = Number.MIN_VALUE
     data.split('\n').forEach(item => {
@@ -19,12 +13,12 @@ const getData = async () => {
             count += Number(item)
         }
     })
-    console.log(max)
+    console.log('part 1: ' + max)
 })();
 
 // Finds the top 3 elves with the greatest number of calories
 (async () => {
-    const data = await getData()
+    const data = await getData('calories.txt')
     let count = 0
     let top = [Number.MIN_VALUE, Number.MIN_VALUE, Number.MIN_VALUE]
     data.split('\n').forEach(item => {
@@ -44,5 +38,5 @@ const getData = async () => {
             count += Number(item)
         }
     })
-    console.log(top[0] + top[1] + top[2])
+    console.log('part 2: ' + (top[0] + top[1] + top[2]))
 })();
